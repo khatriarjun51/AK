@@ -1,277 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arjun Khatri | Transport Engineer</title>
-  <meta name="description" content="Personal portfolio of Arjun Khatri, Transport Engineer in Kathmandu, Nepal." />
-  <style>
-    :root{
-      --bg:#f5f7fb;
-      --card:#ffffff;
-      --text:#172033;
-      --muted:#667085;
-      --primary:#2563eb;
-      --primary-dark:#1d4ed8;
-      --line:#e7eaf0;
-      --shadow:0 18px 50px rgba(20,35,70,.10);
-      --radius:22px;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:var(--bg);color:var(--text);line-height:1.6;
-    }
-    a{text-decoration:none;color:inherit}
-    .container{width:min(1120px,92%);margin:auto}
-    header{
-      position:fixed;top:0;left:0;right:0;z-index:1000;
-      background:rgba(255,255,255,.88);backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(231,234,240,.8);
-    }
-    nav{height:74px;display:flex;align-items:center;justify-content:space-between}
-    .logo{font-size:1.25rem;font-weight:800;letter-spacing:-.5px}
-    .logo span{color:var(--primary)}
-    .nav-links{display:flex;gap:28px;align-items:center;list-style:none}
-    .nav-links a{font-size:.95rem;color:#475467;font-weight:600;transition:.2s}
-    .nav-links a:hover{color:var(--primary)}
-    .menu{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer}
-
-    .hero{padding:150px 0 80px;min-height:90vh;display:flex;align-items:center}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:8px;
-      color:var(--primary);font-weight:800;text-transform:uppercase;
-      letter-spacing:1.5px;font-size:.78rem;margin-bottom:16px;
-    }
-    .eyebrow::before{content:"";width:28px;height:2px;background:var(--primary)}
-    h1{font-size:clamp(3rem,7vw,5.8rem);line-height:.98;letter-spacing:-4px;margin-bottom:24px}
-    h1 span{color:var(--primary)}
-    .hero p{font-size:1.12rem;color:var(--muted);max-width:620px;margin-bottom:32px}
-    .buttons{display:flex;gap:14px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:13px 21px;border-radius:12px;font-weight:750;
-      transition:.25s;border:1px solid transparent;
-    }
-    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 10px 25px rgba(37,99,235,.22)}
-    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px)}
-    .btn-outline{background:#fff;border-color:var(--line);color:var(--text)}
-    .btn-outline:hover{border-color:#cbd5e1;transform:translateY(-2px)}
-    .profile-wrap{display:flex;justify-content:center;position:relative}
-    .profile-wrap::before{
-      content:"";position:absolute;width:330px;height:330px;border-radius:50%;
-      background:#dbeafe;z-index:0;right:2%;top:4%;
-    }
-    .profile{
-      position:relative;z-index:1;width:320px;height:380px;object-fit:cover;
-      border-radius:32px;box-shadow:var(--shadow);border:10px solid #fff;
-      background:#e5e7eb;
-    }
-    .badge{
-      position:absolute;z-index:2;left:0;bottom:18px;background:#fff;
-      border-radius:16px;padding:15px 18px;box-shadow:var(--shadow);
-      font-weight:800;
-    }
-    .badge small{display:block;color:var(--muted);font-weight:600;font-size:.72rem}
-
-    section{padding:90px 0}
-    .section-head{margin-bottom:42px}
-    .section-head h2{font-size:2.35rem;letter-spacing:-1.5px;margin-bottom:9px}
-    .section-head p{color:var(--muted);max-width:650px}
-    .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:start}
-    .stat-card{
-      background:var(--text);color:#fff;border-radius:var(--radius);padding:36px;
-      box-shadow:var(--shadow);
-    }
-    .stat-card .number{font-size:4.2rem;font-weight:900;line-height:1;color:#93c5fd}
-    .stat-card h3{margin:12px 0 7px;font-size:1.25rem}
-    .stat-card p{color:#cbd5e1}
-    .about-text{color:#596579;font-size:1.05rem}
-
-    .services{background:#fff}
-    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-    .service-card{
-      padding:30px;border:1px solid var(--line);border-radius:var(--radius);
-      background:#fff;transition:.25s;
-    }
-    .service-card:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:#bfdbfe}
-    .icon{
-      width:54px;height:54px;border-radius:15px;background:#eff6ff;color:var(--primary);
-      display:grid;place-items:center;font-size:1.45rem;margin-bottom:22px;
-    }
-    .service-card h3{font-size:1.2rem;margin-bottom:9px}
-    .service-card p{color:var(--muted);font-size:.95rem}
-
-    .contact-box{
-      background:linear-gradient(135deg,#172033,#263a60);color:#fff;
-      border-radius:30px;padding:55px;display:flex;justify-content:space-between;
-      align-items:center;gap:30px;box-shadow:var(--shadow);
-    }
-    .contact-box h2{font-size:2.4rem;letter-spacing:-1.5px;margin-bottom:8px}
-    .contact-box p{color:#cbd5e1}
-    .email{
-      display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--text);
-      padding:15px 20px;border-radius:13px;font-weight:750;white-space:nowrap;
-    }
-    footer{padding:28px 0;color:var(--muted);font-size:.9rem;text-align:center}
-
-    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-    .reveal.visible{opacity:1;transform:none}
-
-    @media(max-width:800px){
-      .nav-links{
-        position:absolute;top:74px;left:0;right:0;background:#fff;
-        display:none;flex-direction:column;padding:20px;border-bottom:1px solid var(--line);
-      }
-      .nav-links.open{display:flex}
-      .menu{display:block}
-      .hero-grid,.about-grid{grid-template-columns:1fr}
-      .hero{padding-top:120px}
-      .hero-grid{gap:45px}
-      h1{letter-spacing:-2.5px}
-      .profile{width:290px;height:350px}
-      .service-grid{grid-template-columns:1fr}
-      .contact-box{padding:35px;flex-direction:column;align-items:flex-start}
-      .email{white-space:normal;word-break:break-word}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Er. Arjun Khatri — Transportation Engineer and Urban Planning Specialist">
+<title>Er. Arjun Khatri | Transportation Engineer</title>
+<style>
+:root{--navy:#0b1f33;--navy2:#123552;--accent:#1496a6;--accent2:#20b8a6;--ink:#162536;--muted:#64748b;--bg:#f6f9fb;--white:#fff;--line:#e3eaf0;--shadow:0 18px 50px rgba(11,31,51,.10);--radius:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1140px,92%);margin:auto}
+section{padding:95px 0;scroll-margin-top:80px}
+.section-head{max-width:720px;margin-bottom:45px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;margin-bottom:13px}
+.eyebrow:before{content:"";width:28px;height:2px;background:var(--accent)}
+h2{font-size:clamp(2rem,4vw,3rem);line-height:1.12;color:var(--navy);letter-spacing:-.035em}
+.lead{color:var(--muted);font-size:1.04rem;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 21px;border-radius:11px;font-weight:800;border:1px solid transparent;transition:.25s;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 25px rgba(20,150,166,.25)}
+.btn-primary:hover{transform:translateY(-2px);background:#0d8291}
+.btn-outline{border-color:#cbd8e1;background:#fff;color:var(--navy)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+header{position:fixed;z-index:1000;top:0;width:100%;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(220,228,235,.7)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;font-size:1.12rem;color:var(--navy);letter-spacing:-.02em}.logo span{color:var(--accent)}
+.navlinks{display:flex;align-items:center;gap:25px;font-size:.92rem;font-weight:750;color:#44576a}
+.navlinks a:hover{color:var(--accent)}
+.menu{display:none;background:none;border:0;font-size:1.7rem;color:var(--navy)}
+.hero{min-height:760px;padding-top:150px;display:grid;align-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#f8fbfc 0%,#edf6f7 55%,#f7fafb 100%)}
+.hero:before{content:"";position:absolute;inset:0;opacity:.23;background-image:linear-gradient(30deg,transparent 48%,#b9d7db 49%,#b9d7db 50%,transparent 51%),linear-gradient(150deg,transparent 48%,#b9d7db 49%,#b9d7db 50%,transparent 51%);background-size:120px 120px}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:65px;align-items:center}
+.hero h1{font-size:clamp(3.2rem,7vw,6rem);line-height:.92;color:var(--navy);letter-spacing:-.065em}
+.hero h1 span{color:var(--accent);display:block}
+.hero h3{font-size:clamp(1.15rem,2.4vw,1.65rem);color:var(--navy2);margin:22px 0 5px}
+.degree{font-weight:800;color:#516779}.hero-copy{font-size:1.08rem;color:#566a7c;max-width:650px;margin:22px 0 29px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-card{background:#fff;border:1px solid #e1ebef;border-radius:28px;padding:16px;box-shadow:var(--shadow);transform:rotate(1.5deg)}
+.profile-photo{height:480px;border-radius:20px;overflow:hidden;background:#dcecef;display:flex;align-items:center;justify-content:center}
+.profile-photo img{width:100%;height:100%;object-fit:cover}
+.photo-placeholder{padding:30px;text-align:center;color:#527080}.photo-placeholder strong{display:block;color:var(--navy);font-size:2rem}
+.stats{position:relative;margin-top:-44px;z-index:2}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.stat{padding:27px 20px;text-align:center;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat b{display:block;font-size:2rem;color:var(--navy);line-height:1.1}.stat span{color:var(--muted);font-size:.85rem;font-weight:750}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+.expertise{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}.expertise div{background:#fff;border:1px solid var(--line);padding:15px;border-radius:12px;font-weight:750;font-size:.92rem}
+.services{background:#fff}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.service{padding:27px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;transition:.25s}.service:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#c8e4e7}.icon{font-size:1.8rem;margin-bottom:15px}.service h3,.project h3{color:var(--navy);font-size:1.12rem;margin-bottom:8px}.service p{color:var(--muted);font-size:.92rem}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.project{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s}.project:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.project-top{height:190px;background:linear-gradient(135deg,#102d46,#1496a6);position:relative;overflow:hidden}.project-top:before{content:"";position:absolute;width:240px;height:240px;border:1px solid rgba(255,255,255,.22);border-radius:50%;right:-50px;top:-75px}.project-number{position:absolute;left:22px;bottom:18px;color:#fff;font-size:2.4rem;font-weight:900;opacity:.85}.project-body{padding:23px}.location{color:var(--accent);font-size:.85rem;font-weight:800}.focus{color:var(--muted);font-size:.88rem;margin-top:9px}
+.timeline{position:relative;margin-left:10px}.timeline:before{content:"";position:absolute;left:8px;top:7px;bottom:0;width:2px;background:#d6e5e9}.job{position:relative;padding-left:42px;margin-bottom:38px}.dot{position:absolute;left:0;top:8px;width:18px;height:18px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px #e1f1f2}.job h3{color:var(--navy);font-size:1.2rem}.job .company{font-weight:800;color:var(--accent)}.period{display:inline-block;margin:6px 0 10px;padding:4px 10px;background:#edf7f8;color:#177785;border-radius:20px;font-size:.78rem;font-weight:800}.job ul{padding-left:18px;color:var(--muted);font-size:.92rem}
+.alt{background:#fff}.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.edu{padding:25px;background:#f8fafb;border:1px solid var(--line);border-radius:17px}.edu h3{color:var(--navy);font-size:1.05rem}.edu p{color:var(--muted);font-size:.9rem}.year{color:var(--accent);font-weight:850;margin-top:5px}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.skill{background:#fff;border:1px solid var(--line);padding:24px;border-radius:17px}.skill h3{color:var(--navy);font-size:1rem;margin-bottom:8px}.tags{display:flex;flex-wrap:wrap;gap:7px}.tag{padding:6px 10px;border-radius:20px;background:#eef5f7;color:#466070;font-size:.78rem;font-weight:750}
+.focus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.focus-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:23px;text-align:center;font-weight:850;color:var(--navy)}
+.training{display:grid;grid-template-columns:1fr 1fr;gap:18px}.training-card{background:#fff;border:1px solid var(--line);padding:25px;border-radius:18px}.training-card li{margin:8px 0;color:var(--muted);font-size:.9rem}
+.contact{background:var(--navy);color:#fff}.contact h2{color:#fff}.contact .lead{color:#bdcad5}.contact-grid{display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:center}.contact-list{display:grid;gap:13px;margin-top:25px}.contact-item{padding:15px 17px;border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#d9e4eb;background:rgba(255,255,255,.04)}.contact-item b{color:#fff;display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}.contact-card{background:#fff;color:var(--navy);padding:30px;border-radius:22px}.contact-card h3{font-size:1.5rem}.contact-card p{color:var(--muted);margin:7px 0 20px}
+footer{background:#071724;color:#91a4b3;padding:25px 0;font-size:.85rem}.footer-inner{display:flex;justify-content:space-between;gap:20px}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:900px){.navlinks{position:absolute;top:74px;left:0;right:0;background:#fff;display:none;flex-direction:column;padding:22px;border-bottom:1px solid var(--line);gap:17px}.navlinks.open{display:flex}.menu{display:block}.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.hero{padding-top:125px}.hero-card{max-width:570px;margin:auto}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.service-grid{grid-template-columns:1fr 1fr}.project-grid{grid-template-columns:1fr}.focus-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){section{padding:70px 0}.hero h1{font-size:3.35rem}.profile-photo{height:390px}.service-grid,.edu-grid,.skills-grid,.training{grid-template-columns:1fr}.stats{margin-top:-25px}.stats-grid{grid-template-columns:1fr 1fr}.stat{padding:21px 10px}.stat b{font-size:1.55rem}.expertise{grid-template-columns:1fr}.focus-grid{grid-template-columns:1fr 1fr}.footer-inner{flex-direction:column}.hero-copy{font-size:1rem}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a class="logo" href="#home">AK<span>.</span></a>
-        <button class="menu" id="menuBtn" aria-label="Open navigation">☰</button>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">Er. Arjun <span>Khatri</span></a>
+    <button class="menu" aria-label="Open menu">☰</button>
+    <nav class="navlinks">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a>
+      <a href="#experience">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact" class="btn btn-primary">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+ <div class="container hero-grid">
+  <div class="reveal">
+    <div class="eyebrow">Transportation Engineering • Urban Planning</div>
+    <h1>Er. Arjun <span>Khatri</span></h1>
+    <h3>Transportation Engineer & Urban Planning Specialist</h3>
+    <div class="degree">MSc in Transportation Engineering and Management (TEAM)</div>
+    <p class="hero-copy">Designing safer roads, smarter transportation systems, and sustainable urban infrastructure for better communities.</p>
+    <div class="hero-actions"><a href="#projects" class="btn btn-primary">View My Projects →</a><a href="#contact" class="btn btn-outline">Let's Work Together</a></div>
+  </div>
+  <div class="hero-card reveal">
+    <div class="profile-photo">
+      <img src="image.jpg" alt="Er. Arjun Khatri" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="photo-placeholder" style="display:none"><strong>Er. Arjun Khatri</strong>Transportation Engineer</div>
     </div>
-  </header>
+  </div>
+ </div>
+</section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow">Transport Engineering • Kathmandu, Nepal</div>
-          <h1>Khatri, <span>Arjun</span></h1>
-          <p>
-            Transport Engineer focused on practical, data-informed solutions for
-            transportation, road design, urban planning, and professional report writing.
-          </p>
-          <div class="buttons">
-            <a class="btn btn-primary" href="#services">Explore Services</a>
-            <a class="btn btn-outline" href="mailto:khatriarjun1070@gmail.com">Contact Me</a>
-          </div>
-        </div>
-        <div class="profile-wrap reveal">
-          <img class="profile" src="image.jpg" alt="Khatri, Arjun profile picture"
-               onerror="this.alt='Profile picture'; this.style.objectFit='contain';" />
-          <div class="badge"><small>Projects Completed</small>50+</div>
-        </div>
-      </div>
-    </section>
+<div class="container stats reveal">
+ <div class="stats-grid">
+  <div class="stat"><b data-count="7" data-suffix="+">0</b><span>Years Experience</span></div>
+  <div class="stat"><b data-count="50" data-suffix="+">0</b><span>Projects</span></div>
+  <div class="stat"><b data-count="18" data-suffix="+">0</b><span>Municipalities</span></div>
+  <div class="stat"><b>∞</b><span>Ideas & Solutions</span></div>
+ </div>
+</div>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2>About Me</h2>
-          <p>Engineering experience with a focus on transportation and the built environment.</p>
-        </div>
-        <div class="about-grid">
-          <div class="stat-card reveal">
-            <div class="number">50+</div>
-            <h3>Projects</h3>
-            <p>Experience across professional engineering and planning assignments.</p>
-          </div>
-          <div class="about-text reveal">
-            <p>
-              I am <strong>Khatri, Arjun</strong>, a Transport Engineer based in
-              <strong>Kathmandu, Nepal</strong>. My work combines engineering analysis,
-              planning, design, and clear technical communication to support transportation
-              and urban development projects.
-            </p>
-            <br />
-            <p>
-              I provide practical professional services tailored to project requirements,
-              from technical report preparation and road design to urban planning support.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="about">
+ <div class="container about-grid">
+  <div class="section-head reveal"><div class="eyebrow">About Me</div><h2>Engineering Ideas into Practical Solutions</h2></div>
+  <div class="reveal">
+   <p class="lead">I am a <strong>Transportation Engineer and Civil Engineer</strong> with 7+ years of professional experience in transportation planning, urban development, infrastructure planning, road safety, engineering design, GIS, feasibility studies, and technical consultancy.</p>
+   <p class="lead">My professional experience includes working with municipalities, government agencies, consulting firms, and development projects across Nepal.</p>
+   <p class="lead">I specialize in transforming <strong>field data, engineering analysis, GIS, and planning principles</strong> into practical and sustainable infrastructure solutions.</p>
+   <h3 style="margin-top:30px;color:var(--navy)">My Expertise</h3>
+   <div class="expertise"><div>Transportation & Mobility Planning</div><div>Urban & Regional Planning</div><div>Road Network Planning</div><div>Road Safety</div><div>GIS & Spatial Analysis</div><div>Infrastructure Planning</div><div>Engineering Design</div><div>Technical Report & Proposal Writing</div></div>
+  </div>
+ </div>
+</section>
 
-    <section class="services" id="services">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2>My Services</h2>
-          <p>Professional support for transportation, infrastructure, and planning projects.</p>
-        </div>
-        <div class="service-grid">
-          <article class="service-card reveal">
-            <div class="icon">✎</div>
-            <h3>Report Writing</h3>
-            <p>Clear, structured technical reports, project documentation, analysis, and professional presentation.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="icon">⌁</div>
-            <h3>Road Designing</h3>
-            <p>Transportation and road-design support focused on practical, safe, and context-sensitive solutions.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="icon">⌖</div>
-            <h3>Urban Planning</h3>
-            <p>Planning support for urban mobility, land-use considerations, infrastructure, and sustainable development.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+<section id="services" class="services">
+ <div class="container"><div class="section-head reveal"><div class="eyebrow">Services</div><h2>Professional Services</h2><p class="lead">Integrated engineering, planning, analysis, and technical consultancy for public infrastructure and urban development.</p></div>
+ <div class="service-grid">
+  <div class="service reveal"><div class="icon">🚗</div><h3>Transportation Planning</h3><p>MTMP, R-MTMP, road network planning, mobility studies, and transportation analysis.</p></div>
+  <div class="service reveal"><div class="icon">🏙️</div><h3>Urban Planning</h3><p>IUDP, IDP, PDP, Comprehensive Physical Development Plans, Smart City planning, and municipal development planning.</p></div>
+  <div class="service reveal"><div class="icon">🛣️</div><h3>Road Engineering</h3><p>Urban and hill road planning, engineering design, road inventory, feasibility studies, DPRs, and estimates.</p></div>
+  <div class="service reveal"><div class="icon">🦺</div><h3>Road Safety</h3><p>Road Safety Audits, safety assessments, field investigations, traffic studies, and improvement planning.</p></div>
+  <div class="service reveal"><div class="icon">🗺️</div><h3>GIS & Spatial Planning</h3><p>GIS mapping, road networks, land-use mapping, spatial analysis, municipal profiling, and planning databases.</p></div>
+  <div class="service reveal"><div class="icon">🌱</div><h3>Environmental & Infrastructure Planning</h3><p>EIA, IEE, environmental planning, sustainable infrastructure, and integrated development studies.</p></div>
+  <div class="service reveal"><div class="icon">📑</div><h3>Technical Reports & Proposals</h3><p>DPRs, feasibility reports, planning reports, technical proposals, municipal profiles, and presentations.</p></div>
+ </div></div>
+</section>
 
-    <section id="contact">
-      <div class="container">
-        <div class="contact-box reveal">
-          <div>
-            <h2>Let's Work Together</h2>
-            <p>Have a project or professional inquiry? Get in touch.</p>
-          </div>
-          <a class="email" href="mailto:khatriarjun1070@gmail.com">✉ khatriarjun1070@gmail.com</a>
-        </div>
-      </div>
-    </section>
-  </main>
+<section id="projects">
+ <div class="container"><div class="section-head reveal"><div class="eyebrow">Project Portfolio</div><h2>Selected Professional Projects</h2><p class="lead">A selection of transportation, urban planning, land development, and road safety assignments across Nepal.</p></div>
+ <div class="project-grid">
+  <article class="project reveal"><div class="project-top"><div class="project-number">01</div></div><div class="project-body"><h3>Waling Smart City Master Plan</h3><div class="location">Waling Municipality, Syangja</div><p class="focus"><b>Focus:</b> Smart City Planning • Transportation • Urban Development • GIS</p></div></article>
+  <article class="project reveal"><div class="project-top"><div class="project-number">02</div></div><div class="project-body"><h3>Triyuga IUDP & MTMP</h3><div class="location">Triyuga Municipality, Udayapur</div><p class="focus"><b>Focus:</b> Integrated Urban Development • Transportation Planning • Road Network</p></div></article>
+  <article class="project reveal"><div class="project-top"><div class="project-number">03</div></div><div class="project-body"><h3>Bharatpur Comprehensive Physical Development Plan</h3><div class="location">Bharatpur Metropolitan City</div><p class="focus"><b>Focus:</b> Urban Planning • Infrastructure • Transportation • Land Use</p></div></article>
+  <article class="project reveal"><div class="project-top"><div class="project-number">04</div></div><div class="project-body"><h3>Tikapur Smart City Land Pooling Study</h3><div class="location">Tikapur Municipality, Kailali</div><p class="focus"><b>Focus:</b> Land Pooling • Urban Planning • Feasibility • Infrastructure</p></div></article>
+  <article class="project reveal"><div class="project-top"><div class="project-number">05</div></div><div class="project-body"><h3>Barahakshetra Smart City Development Study</h3><div class="location">Barahakshetra Municipality, Sunsari</div><p class="focus"><b>Focus:</b> Smart City • Infrastructure Planning • Feasibility • DPR</p></div></article>
+  <article class="project reveal"><div class="project-top"><div class="project-number">06</div></div><div class="project-body"><h3>Bardaghat Municipal Transport Master Plan</h3><div class="location">Bardaghat Municipality</div><p class="focus"><b>Focus:</b> Transportation Planning • Road Inventory • GIS • Network Planning</p></div></article>
+  <article class="project reveal"><div class="project-top"><div class="project-number">07</div></div><div class="project-body"><h3>Road Safety Audit</h3><div class="location">Kathmandu Metropolitan City</div><p class="focus"><b>Focus:</b> Road Safety • Field Investigation • Safety Assessment</p></div></article>
+  <article class="project reveal"><div class="project-top"><div class="project-number">08</div></div><div class="project-body"><h3>Land Pooling Feasibility Study</h3><div class="location">Nijgadh Municipality, Bara</div><p class="focus"><b>Focus:</b> Land Pooling • Feasibility • Urban Development • Infrastructure Planning</p></div></article>
+ </div></div>
+</section>
 
-  <footer>
-    <div class="container">© <span id="year"></span> Khatri, Arjun · Transport Engineer · Kathmandu, Nepal</div>
-  </footer>
+<section id="experience" class="alt">
+ <div class="container"><div class="section-head reveal"><div class="eyebrow">Professional Experience</div><h2>Career Journey</h2></div>
+ <div class="timeline">
+  <div class="job reveal"><span class="dot"></span><h3>Transportation Engineer</h3><div class="company">Platform Engineering Consultancy</div><div class="period">2025 – Present • Part-Time</div><ul><li>Triyuga IUDP & MTMP</li><li>Lasikyap–Kaghkot–Chharkabot Road EIA</li><li>Krishnapur Land Pooling Study</li><li>Bharatpur Comprehensive Physical Development Plan</li><li>Technical proposals and infrastructure planning</li></ul></div>
+  <div class="job reveal"><span class="dot"></span><h3>Transportation Engineer</h3><div class="company">RES Engineering Consultancy</div><div class="period">2018 – 2025</div><ul><li>Waling Smart City Master Plan</li><li>Mahagadhimai Integrated Development Plan</li><li>Nijgadh Land Pooling Feasibility Study</li><li>Tikapur Smart City Land Pooling</li><li>Barahakshetra Smart City Study</li><li>Ruru Kshetra–Ridi Religious Tourism Master Plan</li><li>Bardaghat MTMP</li></ul></div>
+  <div class="job reveal"><span class="dot"></span><h3>Transportation Engineer</h3><div class="company">BDA Nepal</div><div class="period">2026 • Project Based</div><ul><li>Road Safety Audit inside Kathmandu Metropolitan City</li></ul></div>
+  <div class="job reveal"><span class="dot"></span><h3>Transportation Engineer</h3><div class="company">Eximious Engineering Consultancy</div><div class="period">Project Based</div><ul><li>Tamankhola R-MTMP</li><li>Tamankhola PDP</li><li>Dhorpatan PDP</li></ul></div>
+  <div class="job reveal"><span class="dot"></span><h3>Civil Engineer</h3><div class="company">SDRC Pvt. Ltd.</div><div class="period">2021 • Project Based</div><ul><li>Integrated Urban Development Plan of 18 Municipalities</li></ul></div>
+  <div class="job reveal"><span class="dot"></span><h3>Civil Engineer</h3><div class="company">ISRC, Kathmandu</div><div class="period">January – July 2018</div><ul><li>Comprehensive Master Plan and Municipal Transport Master Plans</li></ul></div>
+ </div></div>
+</section>
 
-  <script>
-    // Mobile navigation
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
-    });
+<section id="education">
+ <div class="container"><div class="section-head reveal"><div class="eyebrow">Education</div><h2>Academic Background</h2></div>
+ <div class="edu-grid">
+  <div class="edu reveal"><h3>MSc — Transportation Engineering & Management</h3><p>Nepal Engineering College, Pokhara University</p><div class="year">2026 • CGPA 4.00</div></div>
+  <div class="edu reveal"><h3>Bachelor of Civil Engineering</h3><p>Himalaya College of Engineering, Tribhuvan University</p><div class="year">2018 • 78% — First Division</div></div>
+  <div class="edu reveal"><h3>Higher Secondary Education</h3><p>Bishnumati Aawasiya H.S. School, Kathmandu</p><div class="year">2012 • Distinction</div></div>
+  <div class="edu reveal"><h3>School Leaving Certificate</h3><p>Bhimgithe Ma. Vi., Baglung</p><div class="year">2010 • Distinction</div></div>
+ </div></div>
+</section>
 
-    // Dynamic copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
+<section id="skills" class="alt">
+ <div class="container"><div class="section-head reveal"><div class="eyebrow">Technical Skills</div><h2>Tools, Techniques & Documentation</h2></div>
+ <div class="skills-grid">
+  <div class="skill reveal"><h3>Engineering & Design</h3><div class="tags"><span class="tag">AutoCAD</span><span class="tag">Civil 3D</span><span class="tag">SketchUp</span><span class="tag">SW Road</span><span class="tag">Smart Road</span></div></div>
+  <div class="skill reveal"><h3>GIS & Survey</h3><div class="tags"><span class="tag">ArcGIS</span><span class="tag">GPS</span><span class="tag">Total Station</span><span class="tag">Theodolite</span><span class="tag">Level Machine</span></div></div>
+  <div class="skill reveal"><h3>Data & Productivity</h3><div class="tags"><span class="tag">Microsoft Excel</span><span class="tag">Word</span><span class="tag">PowerPoint</span><span class="tag">Microsoft Project</span><span class="tag">SPSS</span></div></div>
+  <div class="skill reveal"><h3>Professional Documentation</h3><div class="tags"><span class="tag">DPR</span><span class="tag">EIA / IEE</span><span class="tag">Feasibility Studies</span><span class="tag">Technical Proposals</span><span class="tag">Planning Reports</span></div></div>
+ </div>
+ <div class="training-card reveal" style="margin-top:18px"><h3 style="color:var(--navy)">Training & Certifications</h3><div class="tags" style="margin-top:13px"><span class="tag">SAP2000 — 30 Hours</span><span class="tag">AutoCAD, Civil 3D & SketchUp</span><span class="tag">ArcGIS — 30 Hours</span><span class="tag">SW Road</span><span class="tag">Smart Road</span><span class="tag">SPSS</span><span class="tag">Nepal Engineering Council — Civil A-Class</span></div><p style="margin-top:14px;color:var(--muted);font-size:.9rem"><b style="color:var(--navy)">NEC Member No. 18194</b></p></div>
+ </div>
+</section>
 
-    // Scroll reveal animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
+<section>
+ <div class="container"><div class="section-head reveal"><div class="eyebrow">Professional Focus</div><h2>Building Better Infrastructure for Nepal</h2><p class="lead">Professional interests that connect engineering, mobility, safety, planning, and sustainable development.</p></div>
+ <div class="focus-grid"><div class="focus-card reveal">Sustainable Transportation</div><div class="focus-card reveal">Road Safety</div><div class="focus-card reveal">Urban Mobility</div><div class="focus-card reveal">Smart Cities</div><div class="focus-card reveal">GIS & Spatial Planning</div><div class="focus-card reveal">Green Infrastructure</div><div class="focus-card reveal">Integrated Urban Development</div><div class="focus-card reveal">Rural Connectivity</div></div>
+ </div>
+</section>
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+<section id="contact" class="contact">
+ <div class="container contact-grid">
+  <div class="reveal"><div class="eyebrow">Contact</div><h2>Let's Work Together</h2><p class="lead">Have a transportation, urban planning, infrastructure, or engineering project? Let's discuss how engineering analysis and practical planning can help turn your project objectives into implementable solutions.</p>
+   <div class="contact-list"><div class="contact-item"><b>Phone</b>+977-9860819532 &nbsp;•&nbsp; +977-9828037731</div><div class="contact-item"><b>Email</b>khatriarjun1070@gmail.com</div><div class="contact-item"><b>Location</b>Kathmandu, Nepal</div></div>
+  </div>
+  <div class="contact-card reveal"><h3>Er. Arjun Khatri</h3><p>Transportation Engineer & Urban Planning Specialist</p><a class="btn btn-primary" href="mailto:khatriarjun1070@gmail.com">Send an Email →</a></div>
+ </div>
+</section>
+</main>
+
+<footer><div class="container footer-inner"><span>© <span id="year"></span> Er. Arjun Khatri. All rights reserved.</span><span>Transportation Engineering • Urban Planning • Infrastructure</span></div></footer>
+
+<script>
+const menu=document.querySelector('.menu'), nav=document.querySelector('.navlinks');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const stats=document.querySelector('.stats');
+let counted=false;
+const statObs=new IntersectionObserver(entries=>{
+ if(entries[0].isIntersecting&&!counted){counted=true;document.querySelectorAll('[data-count]').forEach(el=>{
+   const target=+el.dataset.count,suffix=el.dataset.suffix||'';let n=0;const step=Math.max(1,Math.ceil(target/35));
+   const timer=setInterval(()=>{n=Math.min(target,n+step);el.textContent=n+suffix;if(n>=target)clearInterval(timer)},35);
+ });}
+},{threshold:.35}); statObs.observe(stats);
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
